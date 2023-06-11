@@ -18,7 +18,7 @@ provider "random" {}
 resource "random_pet" "name" {}
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-830c94e3"
+  ami           = "ami-080f7286ffdf988ee"
   instance_type = "t2.small"
   user_data		= file("init_script.sh")
   vpc_security_group_ids = [aws_security_group.web-sg.id]
@@ -31,8 +31,8 @@ resource "aws_instance" "app_server" {
 resource "aws_security_group" "web-sg" {
   name = "${random_pet.name.id}-sg"
   ingress {
-    from_port   = 80
-    to_port     = 80
+    from_port   = 25565
+    to_port     = 25565
     protocol    = "tcp"
     cidr_blocks = ["0.0.0.0/0"]
   }
