@@ -18,12 +18,13 @@ provider "random" {}
 resource "random_pet" "name" {}
 
 resource "aws_instance" "app_server" {
-  ami           = "ami-080f7286ffdf988ee"
-  instance_type = "t2.small"
-  user_data		= file("init_script.sh")
-  vpc_security_group_ids = [aws_security_group.web-sg.id]
-  associate_public_ip_address = true
-  key_name 		= "ssh-key"
+  ami           				= "ami-080f7286ffdf988ee"
+  instance_type 				= "t2.small"
+  user_data						= file("init_script.sh")
+  user_data_replace_on_change 	= true
+  vpc_security_group_ids 		= [aws_security_group.web-sg.id]
+  associate_public_ip_address 	= true
+  key_name 						= "ssh-key"
 
   tags = {
     Name = random_pet.name.id
