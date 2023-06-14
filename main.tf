@@ -57,5 +57,5 @@ resource "aws_security_group" "web-sg" {
 
 resource "aws_key_pair" "instance" {
   key_name	= "ssh-key"
-  public_key = "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDOaS5bWZ47rcUHtimG4kGg0PISCTSpLTjMt028ufQjzWcREvABRPNVPX3JU03bJKPg1vSPZhAy42B7KE7eVxh85hOdkVI+zZ14qu1o3HIlKKy29lpVTDCGJp57pn783QMDLO9DdVOwUzwdJo5qbkW/gayr5f10PpV48gSSFoMs+pzaQicWN7iXkq9Ai0WOXhJPIIg0P5Rpi02oLloBklWqqEv47ItdIfuirh00fR+PobDPpEJpwMw4GxSZogQl9VN3riZc3AjS/vCf4o0t0F7gbBJxhFgZRF3E1qN2y57iw+CKofyABCdxS9qwGpYUcB4irPJ0gzfL44punLIBvb1QMoc8ndO0WD10ls+xIqQ7SmjY2fupxEwRQNpdfTpXK6qLJPg5yPrcwgX3KfjFaehJha8Y0dkstz6JBN7dOOMOXRvz9xPdECz/rCjgVaIwgnE//0JPJTvCA7VJJHO92nTCj6E1yBMMRU9Su8G9bdZHYcfoXnEsKB6s73FAIIoq3/M= blakebabb@10-249-71-185.wireless.oregonstate.edu"
+  public_key = file("ssh-key.pem.pub")
 }
