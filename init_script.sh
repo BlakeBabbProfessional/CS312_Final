@@ -29,7 +29,7 @@ ExecStop=/usr/bin/killall -SIGINT java
 KillMode=process
 
 [Install]
-WantedBy=default.target" > /etc/systemd/system/server-start.service
+WantedBy=default.target" > /etc/systemd/system/serverctl.service
 
 sudo chmod 640 /etc/systemd/system/serverctl.service
 sudo systemctl daemon-reload
