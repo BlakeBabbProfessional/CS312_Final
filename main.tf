@@ -31,6 +31,26 @@ resource "aws_instance" "app_server" {
   }
 }
 
+resource "null" "restart" {
+
+  provisioner "local-exec" {
+    on_failure  = fail
+    interpreter = ["/bin/bash", "-c"]
+    command     = <<EOT
+        echo "Restarting instance with id ${aws_instance.app_server.id}"
+        # aws ec2 reboot-instances --instance-ids ${aws_instance.app_server.id}
+        # To stop instance
+        aws ec2 stop-instances --instance-ids ${aws_instance.app_server.id}
+        echo "Rebooted"
+     EOT
+  }
+
+  triggers = {
+    always_run = "${timestamp()}"
+  }
+}
+
+
 resource "aws_security_group" "web-sg" {
   name = "${random_pet.name.id}-sg"
   ingress {
