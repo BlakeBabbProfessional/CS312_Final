@@ -55,12 +55,8 @@ subgraph init_script
     serverctl --> starts2[Start Serverctl]
 end
 ```
-```mermaid
-flowchart TD
 
-apply[null_resource.restart] --> remote_exec
-
-subgraph remote_exec
-    stop[stop serverctl] --> shutdown
-end
-```
+## Sources
+* [Terraform Docs](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/aws-build)
+* [R.D. Alkire on StackExchange](https://unix.stackexchange.com/questions/302733/minecraft-server-startup-shutdown-with-systemd#comment1206169_335628)
+* [Tomasz Chmielewski on StackOverflow](https://stackoverflow.com/a/72556740)
