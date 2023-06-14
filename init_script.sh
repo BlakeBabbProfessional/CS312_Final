@@ -15,8 +15,9 @@ echo "eula=true" > eula.txt
 
 echo
 echo "Creating a systemd service..."
+# note: after some research, I've discovered SIGTERM is an acceptable way to stop a Minecraft server
 sudo echo "[Unit]
-Description=Start the Minecraft server
+Description=Control the Minecraft server
 After=network.target
 
 [Service]
@@ -30,10 +31,10 @@ KillMode=process
 [Install]
 WantedBy=default.target" > /etc/systemd/system/server-start.service
 
-sudo chmod 640 /etc/systemd/system/server-start.service
+sudo chmod 640 /etc/systemd/system/serverctl.service
 sudo systemctl daemon-reload
-sudo systemctl enable server-start
+sudo systemctl enable serverctl
 
 echo
 echo "Starting Minecraft server..."
-sudo systemctl start server-start
+sudo systemctl start serverctl

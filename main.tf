@@ -43,7 +43,7 @@ resource "null_resource" "restart" {
   provisioner "remote-exec" {
   	inline = [
 	  "echo \"stopping server...\"",
-      "sudo systemctl stop server-start",
+      "sudo systemctl stop serverctl",
 	  "sleep 5",
 	  "sudo /usr/sbin/shutdown -r 1"
 	]
