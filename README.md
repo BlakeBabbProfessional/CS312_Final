@@ -41,7 +41,7 @@ This repository contains Terraform scripts to spin up a Minecraft server on EC2 
 
 ## Pipeline
 ```mermaid
-flowchart LR
+flowchart TD
 
 apply[aws_instance.app_server] --> init_script
 subgraph init_script
@@ -55,7 +55,7 @@ subgraph init_script
 end
 ```
 ```mermaid
-flowchart LR
+flowchart TD
 
 apply[null_resource.restart] --> remote_exec
 
