@@ -1,4 +1,4 @@
-# Minecraft 1.19.4 on AWS with Terraform
+# Minecraft on AWS with Terraform
 
 ---
 
@@ -6,8 +6,9 @@
 This repository contains Terraform scripts to spin up a Minecraft server on EC2 that can be connected with and played on.
 
 ## Prereqs
-* [Terraform CLI](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli)
-* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+* [Minecraft](https://www.minecraft.net/en-us) (1.19.4)
+* [Terraform CLI](https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli) (v1.4.6)
+* [AWS CLI](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) (aws-cli/2.11.24 Python/3.11.3 Darwin/22.4.0 exe/x86_64 prompt/off)
 * [AWS Account](https://aws.amazon.com/free/?all-free-tier.sort-by=item.additionalFields.SortRank&all-free-tier.sort-order=asc&awsf.Free%20Tier%20Types=*all&awsf.Free%20Tier%20Categories=*all) and [associated credentials](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
 
 ## Setup
@@ -49,7 +50,7 @@ subgraph init_script
     minecraft --> serverctl
     subgraph serverctl
         start{Start} --> starts[Start Server]
-        stop{Stop} --> stops[Stop Server]
+        stop{Stop} --> stops[Kill Server]
     end
     serverctl --> starts2[Start Serverctl]
 end
