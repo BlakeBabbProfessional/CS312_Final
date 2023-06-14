@@ -33,16 +33,20 @@ resource "aws_instance" "app_server" {
 
 resource "null_resource" "restart" {
 
-  provisioner "local-exec" {
-    on_failure  = fail
-    interpreter = ["/bin/bash", "-c"]
-    command     = <<EOT
-        echo "Restarting instance with id ${aws_instance.app_server.id}"
-        # aws ec2 reboot-instances --instance-ids ${aws_instance.app_server.id}
-        # To stop instance
-        aws ec2 stop-instances --instance-ids ${aws_instance.app_server.id}
-        echo "Rebooted"
-     EOT
+  connection {
+    type     = "ssh"
+    user     = "ec2-user"
+	private_key = file("ssh-key.pem")
+    host     = aws_instance.app_server.public_ip
+  }
+
+  provisioner "remote-exec" {
+  	inline = [
+	  "echo \"stopping server...\"",
+      "sudo systemctl stop server-start",
+	  "sleep 5",
+	  "sudo /usr/sbin/shutdown -r 1"
+	]
   }
 
   triggers = {

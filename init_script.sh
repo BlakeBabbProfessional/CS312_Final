@@ -24,10 +24,12 @@ Type=simple
 WorkingDirectory=/home/ec2-user/minecraft
 ReadWriteDirectory=/home/ec2-user/minecraft
 ExecStart=/usr/bin/java -Xmx1024M -Xms1024M -jar server.jar nogui
+ExecStop=/usr/bin/killall -SIGINT java
 KillMode=process
 
 [Install]
 WantedBy=default.target" > /etc/systemd/system/server-start.service
+
 sudo chmod 640 /etc/systemd/system/server-start.service
 sudo systemctl daemon-reload
 sudo systemctl enable server-start
