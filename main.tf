@@ -31,7 +31,7 @@ resource "aws_instance" "app_server" {
   }
 }
 
-resource "null" "restart" {
+resource "null_resource" "restart" {
 
   provisioner "local-exec" {
     on_failure  = fail
