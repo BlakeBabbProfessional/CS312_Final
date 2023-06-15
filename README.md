@@ -32,10 +32,6 @@ This repository contains Terraform scripts to spin up a Minecraft server on EC2 
 4. Input the `public-ip`
 5. Click the server icon
 
-### Rebooting the Server
-1. Run `terraform apply -target null_resource.restart`
-2. The Minecraft server will restart automatically, but will take several minutes
-
 ### Destroying the Server
 1. Run `terraform destroy`
 2. This will also permanently destroy the server world file
